@@ -3,6 +3,11 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-Content-Type-Options" content="nosniff">
+<meta http-equiv="X-Frame-Options" content="DENY">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<meta http-equiv="Permissions-Policy" content="camera=(), microphone=(), geolocation=(), payment=(), usb=()">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self' 'unsafe-inline' https://remotive.com; img-src 'self' data: https:; connect-src 'self' https://remotive.com; object-src 'none'; base-uri 'self';">
 <title>TrustTask | Genuine Surveys, Microtasks & Freelance Jobs Hub</title>
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -1382,7 +1387,15 @@ const EMBEDDED_PLATFORMS = [
 
 let allTasks = [...EMBEDDED_TASKS];
 let allPlatforms = EMBEDDED_PLATFORMS;
-let savedTaskIds = JSON.parse(localStorage.getItem("trusttask_saved") || "[]");
+let savedTaskIds = [];
+try {
+  const stored = JSON.parse(localStorage.getItem("trusttask_saved") || "[]");
+  if (Array.isArray(stored)) {
+    savedTaskIds = stored.filter(id => typeof id === "string" && /^[\w\-]+$/.test(id));
+  }
+} catch (e) {
+  savedTaskIds = [];
+}
 let currentPage = 1;
 const ITEMS_PER_PAGE = 6;
 let filteredTasks = [...allTasks];
@@ -1597,6 +1610,7 @@ function switchTab(tab) {
 
 function toggleBookmark(taskId, event) {
   if (event) event.stopPropagation();
+  if (typeof taskId !== "string" || !/^[\w\-]+$/.test(taskId)) return;
   const idx = savedTaskIds.indexOf(taskId);
   if (idx > -1) {
     savedTaskIds.splice(idx, 1);
@@ -1737,8 +1751,8 @@ function createTaskCard(t) {
       <span class="tag payment">${t.payment_methods.slice(0,2).join(", ")}</span>
     </div>
     <div class="card-actions">
-      <button class="btn btn-ghost" onclick="openModal('${t.id}')">Details</button>
-      <a class="btn btn-primary" href="${t.direct_apply_url}" target="_blank" rel="noopener noreferrer">
+      <button class="btn btn-ghost" onclick="openModal('${esc(t.id)}')">Details</button>
+      <a class="btn btn-primary" href="${safeUrl(t.direct_apply_url)}" target="_blank" rel="noopener noreferrer">
         Apply on ${esc(t.platform)} ↗
       </a>
     </div>
@@ -1821,7 +1835,7 @@ function renderPlatforms(list) {
       <div class="pros-title">✓ Verified Benefits</div>
       ${p.pros.map(pr => `<div class="pro-item">${esc(pr)}</div>`).join("")}
       <div style="margin-top:auto;padding-top:14px;border-top:1px solid var(--border2)">
-        <a class="btn btn-primary" href="${p.website}" target="_blank" rel="noopener noreferrer" style="display:flex;align-items:center;justify-content:center;gap:6px;">
+        <a class="btn btn-primary" href="${safeUrl(p.website)}" target="_blank" rel="noopener noreferrer" style="display:flex;align-items:center;justify-content:center;gap:6px;">
           Visit Official Portal ↗
         </a>
       </div>
@@ -2036,7 +2050,7 @@ function openModal(id) {
     </div>
     <div style="display:flex;gap:8px">
       <button class="btn btn-ghost" onclick="closeModal()">Close</button>
-      <a class="btn btn-primary" href="${t.direct_apply_url}" target="_blank" rel="noopener noreferrer" style="flex:1">
+      <a class="btn btn-primary" href="${safeUrl(t.direct_apply_url)}" target="_blank" rel="noopener noreferrer" style="flex:1">
         Start Task on ${esc(t.platform)} ↗
       </a>
     </div>
@@ -2046,9 +2060,31 @@ function openModal(id) {
 
 function closeModal() { document.getElementById("taskModal").classList.add("hidden"); }
 
+// ── SECURITY & SANITIZATION ENGINE ──
 function esc(s) {
-  if(!s) return "";
-  return String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;");
+  if (s == null) return "";
+  return String(s)
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#39;");
+}
+
+function safeUrl(rawUrl) {
+  if (!rawUrl || typeof rawUrl !== "string") return "#";
+  const trimmed = rawUrl.trim();
+  // Disallow javascript:, data:, vbscript:, and relative protocol injections
+  if (/^(javascript|data|vbscript|file):/i.test(trimmed)) return "#";
+  try {
+    const parsed = new URL(trimmed, window.location.origin);
+    if (parsed.protocol === "http:" || parsed.protocol === "https:") {
+      return esc(trimmed);
+    }
+  } catch (e) {
+    return "#";
+  }
+  return "#";
 }
 </script>
 </body>
