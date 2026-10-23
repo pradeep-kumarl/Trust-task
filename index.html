@@ -521,9 +521,9 @@
         <div class="filter-group">
           <label>Category</label>
           <select id="categorySelect">
-            <option value="all">All Categories</option>
-            <option value="vetted_tier1">💎 Vetted Europe & Developed Nations Contracts (€50–€90/hr | $50–$100/hr)</option>
-            <option value="vetted_tech">🚀 All Vetted Tech Networks (Turing, Proxify, Toptal, Arc)</option>
+            <option value="all" selected>🌐 Show Everything (All 60+ Opportunities)</option>
+            <option value="vetted_tier1">💎 Europe & Tier-1 Developed Contracts Only (€50–€90/hr | $50–$100/hr)</option>
+            <option value="vetted_tech">💻 Vetted Tech Networks Only (18 Roles: Turing, Proxify, Toptal, Arc)</option>
             <option value="stipend_volunteer">🤝 Paid Volunteer & Civic Stipends</option>
             <option value="freelance">💼 All Freelance Jobs</option>
             <option value="freelance_tech">💻 Freelance Tech & Web Dev</option>
@@ -586,7 +586,12 @@
 
     <div class="section-header">
       <span class="section-title">Verified Genuine Opportunities</span>
-      <span class="count-badge" id="taskCount">Loading…</span>
+      <div style="display:flex;align-items:center;gap:10px;">
+        <button id="btnResetFilters" class="btn btn-ghost hidden" onclick="resetAllFilters()" style="font-size:11px;padding:3px 10px;color:var(--teal);border-color:var(--teal);cursor:pointer;">
+          ✕ Reset to Show All 60+
+        </button>
+        <span class="count-badge" id="taskCount">Loading…</span>
+      </div>
     </div>
 
     <div class="task-grid" id="tasksGrid"></div>
@@ -2123,11 +2128,32 @@ function applyFiltersAndSort() {
   else if (sort === "time_asc") filteredTasks.sort((a,b) => a.estimated_minutes - b.estimated_minutes);
   else if (sort === "trust_desc") filteredTasks.sort((a,b) => b.trust_score - a.trust_score);
 
+  const isFiltered = q !== "" || cat !== "all" || country !== "Global" || minH > 0 || payment !== "all";
+  const resetBtn = document.getElementById("btnResetFilters");
+  if (resetBtn) resetBtn.classList.toggle("hidden", !isFiltered);
+
   const totalPages = Math.ceil(filteredTasks.length / ITEMS_PER_PAGE) || 1;
   if (currentPage > totalPages) currentPage = 1;
 
   renderCurrentPage();
   renderPagination();
+}
+
+function resetAllFilters() {
+  const searchEl = document.getElementById("searchInput");
+  const catEl = document.getElementById("categorySelect");
+  const countryEl = document.getElementById("countrySelect");
+  const minHEl = document.getElementById("minHourlySelect");
+  const payEl = document.getElementById("paymentSelect");
+  
+  if (searchEl) searchEl.value = "";
+  if (catEl) catEl.value = "all";
+  if (countryEl) countryEl.value = "Global";
+  if (minHEl) minHEl.value = "0";
+  if (payEl) payEl.value = "all";
+  
+  currentPage = 1;
+  applyFiltersAndSort();
 }
 
 function goToPage(page) {
