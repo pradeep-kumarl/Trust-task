@@ -958,6 +958,29 @@
         </div>
       </div>
 
+      <!-- LIVE TOOL & TECH DEMAND RANKINGS (DYNAMICALLY DERIVED FROM JOB CATALOG) -->
+      <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);padding:22px;margin-bottom:24px;">
+        <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;margin-bottom:16px;">
+          <div>
+            <h3 style="font-size:16px;font-weight:700;display:flex;align-items:center;gap:8px;">
+              🛠️ Most-Requested Tools & Skills (Live Job Market Rankings)
+            </h3>
+            <p style="font-size:12px;color:var(--text3);margin-top:4px;">
+              Rankings dynamically recalculate as new jobs and client requirements are added. Click any tool to view matching opportunities.
+            </p>
+          </div>
+          <div style="display:flex;align-items:center;gap:8px;">
+            <span style="font-size:11px;background:var(--green-bg);color:var(--green);border:1px solid var(--green-border);padding:4px 10px;border-radius:12px;font-weight:700;">
+              ● Real-Time Job Requirements Engine
+            </span>
+          </div>
+        </div>
+
+        <div id="toolRankingsGrid" style="display:grid;grid-template-columns:repeat(auto-fit, minmax(260px, 1fr));gap:14px;">
+          <!-- Dynamically populated via calculateToolRankings() -->
+        </div>
+      </div>
+
       <!-- REAL-TIME VISITOR STREAM (LIVE ACTIVITY FEED) -->
       <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);padding:20px;margin-bottom:24px">
         <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:14px">
@@ -2052,8 +2075,108 @@ function renderLiveActivityStream() {
   `).join("");
 }
 
+const TRACKED_TOOLS = [
+  { name: "Docker & Containers", regex: /docker|container/i, icon: "🐳", category: "DevOps & Cloud Pipelines", color: "#388bfd", search: "Docker" },
+  { name: "Python & FastAPI", regex: /python|fastapi/i, icon: "🐍", category: "Backend & AI Data Pipelines", color: "#3fb950", search: "Python" },
+  { name: "AWS Cloud (ECS/EKS)", regex: /aws|ecs|eks|cloudwatch/i, icon: "☁️", category: "Cloud Architecture", color: "#e3b341", search: "AWS" },
+  { name: "Kubernetes (K8s)", regex: /kubernetes|k8s/i, icon: "☸️", category: "Cluster Orchestration", color: "#58a6ff", search: "Kubernetes" },
+  { name: "Terraform & IaC", regex: /terraform|iac/i, icon: "🏗️", category: "Infrastructure-as-Code", color: "#bc8cff", search: "Terraform" },
+  { name: "DaVinci Resolve / Premiere", regex: /davinci|premiere|video edit/i, icon: "🎬", category: "YouTube Video Editing", color: "#f85149", search: "DaVinci" },
+  { name: "Photoshop & Figma", regex: /photoshop|figma|thumbnail/i, icon: "🎨", category: "High-CTR Visual Packaging", color: "#db61a2", search: "Photoshop" },
+  { name: "DevSecOps (Trivy/Sonar)", regex: /trivy|sonarqube|devsecops|gdpr|soc-2/i, icon: "🔒", category: "Security & Quality Gates", color: "#2ea043", search: "Trivy" },
+  { name: "VidIQ & YouTube SEO", regex: /vidiq|tubebuddy|seo/i, icon: "📈", category: "Creator Growth & SEO", color: "#f0883e", search: "VidIQ" },
+  { name: "Git & GitHub Bounties", regex: /git|github/i, icon: "🐙", category: "Version Control & Bounties", color: "#79c0ff", search: "GitHub" }
+];
+
+function renderToolDemandRankings() {
+  const grid = document.getElementById("toolRankingsGrid");
+  if (!grid) return;
+
+  const toolStats = TRACKED_TOOLS.map(tool => {
+    const matchingJobs = allTasks.filter(t => {
+      const fullText = `${t.title} ${t.description} ${(t.requirements || []).join(" ")} ${t.platform}`.toLowerCase();
+      return tool.regex.test(fullText);
+    });
+
+    const count = matchingJobs.length;
+    let avgPay = 0;
+    if (count > 0) {
+      const sum = matchingJobs.reduce((acc, j) => acc + (j.hourly_rate_usd || 0), 0);
+      avgPay = Math.round(sum / count);
+    }
+
+    const demandPct = allTasks.length > 0 ? Math.min(100, Math.round((count / allTasks.length) * 100 * 2.2)) : 0;
+
+    return {
+      ...tool,
+      jobCount: count,
+      avgHourly: avgPay,
+      pct: demandPct
+    };
+  });
+
+  toolStats.sort((a, b) => b.jobCount - a.jobCount || b.avgHourly - a.avgHourly);
+
+  grid.innerHTML = toolStats.map((item, idx) => {
+    const rank = idx + 1;
+    const rankColor = rank === 1 ? "#f1e05a" : (rank === 2 ? "#e1e4e8" : (rank === 3 ? "#d29922" : "var(--text3)"));
+    const medal = rank === 1 ? "🥇" : (rank === 2 ? "🥈" : (rank === 3 ? "🥉" : `#${rank}`));
+
+    return `
+      <div class="plat-card" style="padding:16px;background:var(--surface2);border:1px solid var(--border);border-radius:var(--radius);position:relative;display:flex;flex-direction:column;justify-content:space-between;gap:12px;">
+        <div>
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px;">
+            <span style="font-size:12px;font-weight:800;color:${rankColor};background:var(--bg);padding:2px 8px;border-radius:10px;border:1px solid var(--border2);">
+              ${medal} Rank
+            </span>
+            <span style="font-size:11px;color:var(--text3);font-weight:600;">
+              ${item.jobCount} Active Roles
+            </span>
+          </div>
+
+          <div style="display:flex;align-items:center;gap:10px;">
+            <div style="font-size:24px;">${item.icon}</div>
+            <div>
+              <div style="font-size:14px;font-weight:700;color:var(--text);">${esc(item.name)}</div>
+              <div style="font-size:11px;color:var(--text3);">${esc(item.category)}</div>
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <div style="display:flex;justify-content:space-between;align-items:center;font-size:12px;margin-bottom:6px;">
+            <span style="color:var(--text3);">Market Rate:</span>
+            <strong style="color:var(--green);font-size:13px;">$${item.avgHourly}/hr avg</strong>
+          </div>
+
+          <div style="background:var(--bg);height:6px;border-radius:3px;overflow:hidden;margin-bottom:12px;">
+            <div style="background:${item.color};height:100%;width:${item.pct}%;"></div>
+          </div>
+
+          <button onclick="filterByTool('${esc(item.search)}')" class="btn btn-ghost" style="width:100%;font-size:11px;padding:6px;display:flex;align-items:center;justify-content:center;gap:6px;border-color:var(--border);cursor:pointer;">
+            🔎 View ${item.jobCount} Matching Jobs ↗
+          </button>
+        </div>
+      </div>
+    `;
+  }).join("");
+}
+
+function filterByTool(toolQuery) {
+  switchTab("tasks");
+  const input = document.getElementById("searchInput");
+  const cat = document.getElementById("categorySelect");
+  if (cat) cat.value = "all";
+  if (input) {
+    input.value = toolQuery;
+    currentPage = 1;
+    applyFiltersAndSort();
+  }
+}
+
 function renderAnalyticsDashboard() {
   renderLiveActivityStream();
+  renderToolDemandRankings();
   const visits = parseInt(localStorage.getItem("trusttask_local_visits") || "1", 10);
   const totalVisitors = 2840 + visits;
   const totalViews = 9600 + (visits * 4);
@@ -2080,6 +2203,7 @@ document.addEventListener("DOMContentLoaded", () => {
   initVisitorDashboard();
   applyFiltersAndSort();
   renderPlatforms(allPlatforms);
+  renderToolDemandRankings();
   initInteractiveCanvas();
 });
 
