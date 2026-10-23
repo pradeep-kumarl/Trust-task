@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>TrustTask | Genuine Survey & Microtask Intelligence Engine</title>
+<title>TrustTask | Genuine Surveys, Microtasks & Freelance Jobs Hub</title>
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -420,15 +420,15 @@
 <!-- STATS BANNER -->
 <div class="stats-bar">
   <div class="stat-card">
-    <div class="stat-value green" id="stat-tasks">35+</div>
-    <div class="stat-label">Verified Active Tasks</div>
+    <div class="stat-value green" id="stat-tasks">45+</div>
+    <div class="stat-label">Verified Opportunities</div>
   </div>
   <div class="stat-card">
-    <div class="stat-value teal" id="stat-rate">$34.20/hr</div>
+    <div class="stat-value teal" id="stat-rate">$36.50/hr</div>
     <div class="stat-label">Avg Normalized Pay</div>
   </div>
   <div class="stat-card">
-    <div class="stat-value amber" id="stat-platforms">12</div>
+    <div class="stat-value amber" id="stat-platforms">18</div>
     <div class="stat-label">Trusted Platforms</div>
   </div>
   <div class="stat-card">
@@ -444,7 +444,7 @@
       <div class="search-row">
         <div class="search-wrap">
           <span class="search-icon">🔍</span>
-          <input type="text" id="searchInput" placeholder="Search tasks, platforms, keywords, languages (e.g. Python, Hindi, UX)...">
+          <input type="text" id="searchInput" placeholder="Search tasks, freelance jobs, platforms, skills (e.g. Python, Figma, Writing, Hindi)...">
         </div>
       </div>
       <div class="filters-row">
@@ -452,6 +452,11 @@
           <label>Category</label>
           <select id="categorySelect">
             <option value="all">All Categories</option>
+            <option value="freelance">💼 All Freelance Jobs</option>
+            <option value="freelance_tech">💻 Freelance Tech & Web Dev</option>
+            <option value="freelance_writing">✍️ Freelance Writing & Translation</option>
+            <option value="freelance_design">🎨 Freelance Graphic & UI Design</option>
+            <option value="freelance_va">📋 Virtual Assistance & Admin</option>
             <option value="survey">Academic Surveys</option>
             <option value="usability_testing">Usability & App Testing</option>
             <option value="ai_annotation">AI Annotation & Training</option>
@@ -497,7 +502,7 @@
             <option value="all">All Payout Methods</option>
             <option value="paypal">PayPal</option>
             <option value="india">Paytm / UPI / Amazon Pay (IN)</option>
-            <option value="bank">Bank / Wire Transfer</option>
+            <option value="bank">Bank / Wire / Payoneer / Wise</option>
             <option value="crypto">Crypto</option>
           </select>
         </div>
@@ -577,8 +582,10 @@
           <select id="calcType" onchange="calculateEarnings()">
             <option value="entry">Basic Surveys & Microtasks ($8 - $12 / hr)</option>
             <option value="testing" selected>Usability Testing & Audio ($20 - $35 / hr)</option>
-            <option value="ai">AI Data Training & Coding ($25 - $45 / hr)</option>
-            <option value="interviews">Research Interviews ($60 - $120 / hr)</option>
+            <option value="freelance_general">Freelance Writing & Virtual Support ($18 - $30 / hr)</option>
+            <option value="freelance_tech">Freelance Web Dev & Tech Gigs ($30 - $60 / hr)</option>
+            <option value="ai">AI Data Training & Model Review ($25 - $45 / hr)</option>
+            <option value="interviews">Research Interviews & Advisory ($60 - $120 / hr)</option>
           </select>
         </div>
       </div>
@@ -656,6 +663,26 @@
             Sites requiring $100 or $150 minimum withdrawal. You earn quickly up to $92, then survey invitations stop completely or your account is banned right before reaching threshold.
           </p>
         </div>
+
+        <div style="background:var(--surface);border:1px solid var(--red-border);border-radius:var(--radius-lg);padding:18px">
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px">
+            <span style="font-weight:700;color:var(--red)">PDF Retyping & Data Entry Fraud</span>
+            <span class="scam-badge">Freelance Scam</span>
+          </div>
+          <p style="font-size:12px;color:var(--text2);line-height:1.6">
+            "Retype scanned image/PDF pages to MS Word for $30/page ($1,200 total)." After submitting work, scammers demand a "security deposit" or "notary license fee" before sending payment. Genuine clients never charge freelancers.
+          </p>
+        </div>
+
+        <div style="background:var(--surface);border:1px solid var(--red-border);border-radius:var(--radius-lg);padding:18px">
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px">
+            <span style="font-weight:700;color:var(--red)">Fake Check / Equipment Purchase Scheme</span>
+            <span class="scam-badge">Check Fraud</span>
+          </div>
+          <p style="font-size:12px;color:var(--text2);line-height:1.6">
+            A "remote employer" sends a check for $2,500 to buy home-office hardware from their "vendor". The check initially clears, but bounces weeks later. You lose the money sent to the fake vendor.
+          </p>
+        </div>
       </div>
     </div>
   </section>
@@ -684,7 +711,7 @@
 </div>
 
 <footer>
-  TrustTask &bull; Genuine Survey & Microtask Intelligence Engine &bull; AWS Amplify High-Performance CDN
+  TrustTask &bull; Genuine Surveys, Microtasks & Freelance Jobs &bull; AWS Amplify High-Performance CDN
 </footer>
 
 <script>
@@ -905,6 +932,114 @@ const EMBEDDED_TASKS = [
     payment_methods: ["PayPal"], eligible_countries: ["IN", "US", "UK", "CA", "AU", "SG", "Global"],
     requirements: ["Webcam", "Microphone"], min_age: 18,
     direct_apply_url: "https://www.userlytics.com/participate"
+  },
+  {
+    id: "task-freelance-upwork-01", title: "Technical Writer: Python & REST API Documentation Guide",
+    description: "Write an authoritative 1,500-word tutorial with clear code snippets explaining FastAPI route handlers and Pydantic validation.",
+    platform: "Upwork", category: "freelance_writing", reward_amount: 65.00, currency: "USD",
+    estimated_minutes: 120, hourly_rate_usd: 32.50, trust_score: 96, verified: true,
+    payment_methods: ["Direct Deposit", "PayPal", "Payoneer", "Wire Transfer"], eligible_countries: ["IN", "US", "UK", "CA", "AU", "Global"],
+    requirements: ["Python code samples", "Clear technical English writing"], min_age: 18,
+    direct_apply_url: "https://www.upwork.com/freelance-jobs/writing/"
+  },
+  {
+    id: "task-freelance-upwork-02", title: "WordPress Core Web Vitals & PageSpeed Performance Fix",
+    description: "Optimize high-traffic WooCommerce store. Compress assets, configure server caching, eliminate render-blocking CSS/JS, and achieve 90+ mobile score.",
+    platform: "Upwork", category: "freelance_tech", reward_amount: 85.00, currency: "USD",
+    estimated_minutes: 120, hourly_rate_usd: 42.50, trust_score: 95, verified: true,
+    payment_methods: ["Direct Deposit", "PayPal", "Payoneer"], eligible_countries: ["IN", "US", "UK", "CA", "AU", "Global"],
+    requirements: ["WordPress / WooCommerce experience", "Lighthouse audit skills"], min_age: 18,
+    direct_apply_url: "https://www.upwork.com/freelance-jobs/web-development/"
+  },
+  {
+    id: "task-freelance-fiverr-01", title: "Figma UI/UX Design: 3 Clean Mobile App Onboarding Screens",
+    description: "Design 3 modern, conversion-focused mobile app onboarding screens in Figma using auto-layout, design tokens, and exported SVG assets.",
+    platform: "Fiverr", category: "freelance_design", reward_amount: 75.00, currency: "USD",
+    estimated_minutes: 150, hourly_rate_usd: 30.00, trust_score: 93, verified: true,
+    payment_methods: ["PayPal", "Bank Transfer", "Payoneer"], eligible_countries: ["IN", "US", "UK", "Global"],
+    requirements: ["Figma UI portfolio", "Mobile UX conventions"], min_age: 18,
+    direct_apply_url: "https://www.fiverr.com/categories/graphics-design"
+  },
+  {
+    id: "task-freelance-fiverr-02", title: "YouTube High-CTR Thumbnail Design Kit (Pack of 3)",
+    description: "Create 3 click-worthy YouTube thumbnails with crisp subject cutouts, punchy typography, and contrast color treatment for tech channel.",
+    platform: "Fiverr", category: "freelance_design", reward_amount: 35.00, currency: "USD",
+    estimated_minutes: 75, hourly_rate_usd: 28.00, trust_score: 92, verified: true,
+    payment_methods: ["PayPal", "Bank Transfer", "Payoneer"], eligible_countries: ["IN", "Global"],
+    requirements: ["Photoshop or Canva Pro", "CTR design sense"], min_age: 16,
+    direct_apply_url: "https://www.fiverr.com/categories/graphics-design"
+  },
+  {
+    id: "task-freelance-problogger-01", title: "Personal Finance & Index Fund Investing Article (1,200 Words)",
+    description: "Write an engaging, accessible beginner's guide on Dollar Cost Averaging vs. Lump Sum investing in low-cost index funds.",
+    platform: "ProBlogger", category: "freelance_writing", reward_amount: 50.00, currency: "USD",
+    estimated_minutes: 120, hourly_rate_usd: 25.00, trust_score: 96, verified: true,
+    payment_methods: ["PayPal", "Direct Deposit"], eligible_countries: ["IN", "US", "UK", "CA", "AU", "Global"],
+    requirements: ["Native/Fluent English", "Financial literacy"], min_age: 18,
+    direct_apply_url: "https://problogger.com/jobs/"
+  },
+  {
+    id: "task-freelance-freelancer-01", title: "English to Hindi / Regional Audio Transcription & Timecoding",
+    description: "Transcribe 45 minutes of recorded user interviews (English mixed with Hindi terms) into clean, time-stamped text and SRT file.",
+    platform: "Freelancer.com", category: "freelance_writing", reward_amount: 32.00, currency: "USD",
+    estimated_minutes: 90, hourly_rate_usd: 21.33, trust_score: 89, verified: true,
+    payment_methods: ["Direct Bank Deposit", "PayPal"], eligible_countries: ["IN", "Global"],
+    requirements: ["Fluent English & Hindi", "Good earphones"], min_age: 18,
+    direct_apply_url: "https://www.freelancer.com/jobs/transcription/"
+  },
+  {
+    id: "task-freelance-guru-01", title: "Virtual Assistant: B2B LinkedIn Lead Prospecting & Verification",
+    description: "Research and collect 120 verified B2B leads (VP/Director of Sales in US/UK SaaS companies) with validated business emails in Google Sheets.",
+    platform: "Guru", category: "freelance_va", reward_amount: 45.00, currency: "USD",
+    estimated_minutes: 180, hourly_rate_usd: 15.00, trust_score: 91, verified: true,
+    payment_methods: ["Bank Wire", "PayPal", "Payoneer"], eligible_countries: ["IN", "Global", "PH", "US"],
+    requirements: ["LinkedIn Sales Navigator or Apollo", "Google Sheets"], min_age: 18,
+    direct_apply_url: "https://www.guru.com/d/jobs/c/administrative-secretarial/"
+  },
+  {
+    id: "task-freelance-upwork-03", title: "Python Web Scraping & Structured JSON Catalog Extraction",
+    description: "Build and run a Python script (Playwright/BeautifulSoup) to reliably scrape public catalog data with proxy rotation and export to clean JSON/CSV.",
+    platform: "Upwork", category: "freelance_tech", reward_amount: 70.00, currency: "USD",
+    estimated_minutes: 90, hourly_rate_usd: 46.67, trust_score: 95, verified: true,
+    payment_methods: ["Direct Deposit", "PayPal", "Payoneer"], eligible_countries: ["IN", "Global", "US", "UK"],
+    requirements: ["Python 3.10+", "Rate limit handling experience"], min_age: 18,
+    direct_apply_url: "https://www.upwork.com/freelance-jobs/python/"
+  },
+  {
+    id: "task-freelance-wwr-01", title: "Remote Customer Care & Email Helpdesk Specialist (Shift Contract)",
+    description: "Answer tier-1 customer inquiries, handle order tracking questions, and process refund requests via Zendesk. 4-hour flexible shift.",
+    platform: "We Work Remotely", category: "freelance_va", reward_amount: 76.00, currency: "USD",
+    estimated_minutes: 240, hourly_rate_usd: 19.00, trust_score: 97, verified: true,
+    payment_methods: ["Direct Bank Transfer", "Wise", "PayPal"], eligible_countries: ["IN", "Global", "US", "UK", "EU"],
+    requirements: ["High-speed broadband", "Empathetic communication"], min_age: 18,
+    direct_apply_url: "https://weworkremotely.com/categories/remote-customer-support-jobs"
+  },
+  {
+    id: "task-freelance-fiverr-03", title: "Canva Social Media Marketing Kit (15 Custom Brand Posts)",
+    description: "Create 15 engaging, on-brand social media graphic templates in Canva for a wellness brand (quotes, tips, carousels, testimonials).",
+    platform: "Fiverr", category: "freelance_design", reward_amount: 40.00, currency: "USD",
+    estimated_minutes: 90, hourly_rate_usd: 26.67, trust_score: 92, verified: true,
+    payment_methods: ["PayPal", "Bank Transfer"], eligible_countries: ["IN", "Global"],
+    requirements: ["Canva Pro proficiency", "Portfolio of social designs"], min_age: 16,
+    direct_apply_url: "https://www.fiverr.com/categories/graphics-design"
+  },
+  {
+    id: "task-freelance-upwork-04", title: "React & Tailwind CSS Responsive Layout Fixes (Mobile Drawer)",
+    description: "Resolve mobile drawer overlap issue, fix safari flex gap quirks, and polish mobile checkout screens on an existing React/Tailwind codebase.",
+    platform: "Upwork", category: "freelance_tech", reward_amount: 60.00, currency: "USD",
+    estimated_minutes: 80, hourly_rate_usd: 45.00, trust_score: 96, verified: true,
+    payment_methods: ["Direct Deposit", "PayPal", "Payoneer"], eligible_countries: ["IN", "Global", "US", "UK"],
+    requirements: ["React 18+", "Tailwind CSS", "GitHub PR workflow"], min_age: 18,
+    direct_apply_url: "https://www.upwork.com/freelance-jobs/frontend-development/"
+  },
+  {
+    id: "task-freelance-freelancer-02", title: "Copyediting & Proofreading: 8,000-Word Business Whitepaper",
+    description: "Thorough line-editing, terminology consistency, sentence flow, and punctuation checking for a fintech market overview paper.",
+    platform: "Freelancer.com", category: "freelance_writing", reward_amount: 48.00, currency: "USD",
+    estimated_minutes: 120, hourly_rate_usd: 24.00, trust_score: 90, verified: true,
+    payment_methods: ["Direct Bank Deposit", "PayPal"], eligible_countries: ["IN", "Global", "US", "UK"],
+    requirements: ["Native/Fluent English", "Track changes in MS Word"], min_age: 18,
+    direct_apply_url: "https://www.freelancer.com/jobs/proofreading/"
   }
 ];
 
@@ -980,6 +1115,42 @@ const EMBEDDED_PLATFORMS = [
     trust_score: 85, avg_hourly_pay: "$8 – $15/hr", min_payout: "$5.00",
     reputation: "Great for regional Indian languages (Hindi, Tamil, Marathi, Bengali). Pays directly to PayPal.",
     pros: ["Regional language tasks", "Simple recording guidelines", "PayPal payouts"]
+  },
+  {
+    name: "Upwork", website: "https://www.upwork.com", category: "Global Freelance Marketplace",
+    trust_score: 96, avg_hourly_pay: "$15 – $75/hr", min_payout: "$10.00 (Direct Bank / PayPal)",
+    reputation: "World's premier freelance platform for software, writing, design, and marketing. Features escrow-protected milestone payments.",
+    pros: ["Escrow payment protection", "Huge client pool in India & globally", "Hourly tracking with automatic invoicing"]
+  },
+  {
+    name: "Fiverr", website: "https://www.fiverr.com", category: "Freelance Gigs & Digital Services",
+    trust_score: 93, avg_hourly_pay: "$10 – $50/gig", min_payout: "$20.00 (Bank / PayPal)",
+    reputation: "Global marketplace where buyers purchase defined service packages. Great for graphic designers, developers, and voice artists.",
+    pros: ["Set your own fixed prices", "Clients purchase directly from your gig page", "Direct bank transfer in India via Payoneer"]
+  },
+  {
+    name: "Freelancer.com", website: "https://www.freelancer.com", category: "Competitive Freelance & Contests",
+    trust_score: 89, avg_hourly_pay: "$12 – $40/hr", min_payout: "$30.00 (Bank / PayPal)",
+    reputation: "One of the longest-running freelance job boards with a massive Indian freelancer base. Features competitive contests and milestone billing.",
+    pros: ["Extensive beginner opportunities", "Contests allow you to win cash with portfolio pieces", "Local Indian bank account withdrawal"]
+  },
+  {
+    name: "ProBlogger Jobs", website: "https://problogger.com/jobs/", category: "Freelance Writing & Copywriting",
+    trust_score: 96, avg_hourly_pay: "$20 – $50/hr", min_payout: "Direct contract",
+    reputation: "The undisputed gold standard job board for remote content writers, copywriters, and ghostwriters. Zero middleman commission cuts.",
+    pros: ["High editorial pay rates", "Direct client relationship (no 20% platform fee)", "Remote worldwide positions"]
+  },
+  {
+    name: "Guru", website: "https://www.guru.com", category: "Freelance Services & Admin Support",
+    trust_score: 91, avg_hourly_pay: "$12 – $45/hr", min_payout: "$10.00 (Wire / PayPal)",
+    reputation: "Reliable platform with SafePay escrow protection and lower commission fees than Upwork. Strong for virtual assistance and translations.",
+    pros: ["SafePay escrow security", "Low fees for established freelancers", "Flexible billing models (hourly, milestone, recurring)"]
+  },
+  {
+    name: "We Work Remotely", website: "https://weworkremotely.com", category: "Remote Freelance & Contracts",
+    trust_score: 97, avg_hourly_pay: "$25 – $80/hr", min_payout: "Direct contract (Wise / Bank)",
+    reputation: "The largest remote work community in the world. Top vetted tech companies hire contractors for development, customer support, and writing.",
+    pros: ["Vetted international employers", "No platform fees subtracted from your earnings", "High baseline pay rates"]
   }
 ];
 
@@ -1055,14 +1226,14 @@ function applyFiltersAndSort() {
 
   filteredTasks = allTasks.filter(t => {
     const matchQ = !q || [t.title, t.platform, t.description, t.category, ...(t.requirements||[])].some(s => s && s.toLowerCase().includes(q));
-    const matchC = cat === "all" || t.category.toLowerCase() === cat.toLowerCase();
+    const matchC = cat === "all" || (cat === "freelance" ? t.category.startsWith("freelance") : t.category.toLowerCase() === cat.toLowerCase());
     const matchH = t.hourly_rate_usd >= minH;
     const matchR = country === "Global" || t.eligible_countries.includes("Global") || t.eligible_countries.includes(country);
     
     let matchP = true;
     if (payment === "paypal") matchP = t.payment_methods.some(m => /paypal/i.test(m));
     else if (payment === "india") matchP = t.payment_methods.some(m => /paytm|amazon|flipkart|upi/i.test(m));
-    else if (payment === "bank") matchP = t.payment_methods.some(m => /bank|wire|sepa/i.test(m));
+    else if (payment === "bank") matchP = t.payment_methods.some(m => /bank|wire|sepa|deposit|payoneer|wise/i.test(m));
     else if (payment === "crypto") matchP = t.payment_methods.some(m => /crypto/i.test(m));
 
     return matchQ && matchC && matchH && matchR && matchP;
@@ -1253,6 +1424,8 @@ function calculateEarnings() {
 
   let hourlyRate = 10;
   if (type === "testing") hourlyRate = 25;
+  else if (type === "freelance_general") hourlyRate = 24;
+  else if (type === "freelance_tech") hourlyRate = 45;
   else if (type === "ai") hourlyRate = 35;
   else if (type === "interviews") hourlyRate = 80;
 
@@ -1285,7 +1458,7 @@ function analyzeScamLocally(url, text) {
     };
   }
 
-  const whitelist = ["prolific.com", "usertesting.com", "dataannotation.tech", "outlier.ai", "toloka.ai", "yougov.com", "toluna.com", "respondent.io", "clickworker.com", "freecash.com", "swagbucks.com"];
+  const whitelist = ["prolific.com", "usertesting.com", "dataannotation.tech", "outlier.ai", "toloka.ai", "yougov.com", "toluna.com", "respondent.io", "clickworker.com", "freecash.com", "swagbucks.com", "upwork.com", "fiverr.com", "freelancer.com", "problogger.com", "guru.com", "weworkremotely.com", "toptal.com"];
   const matchedDomain = whitelist.find(d => full.includes(d));
   if (matchedDomain) {
     score = 95;
@@ -1296,9 +1469,21 @@ function analyzeScamLocally(url, text) {
     score -= 45;
     redFlags.push("Demands upfront payment or registration fee (100% scam sign)");
   }
+  if (/security deposit|notary fee|id card fee|clearance fee|license fee/.test(full)) {
+    score -= 45;
+    redFlags.push("Advance fee trap: Genuine freelance clients never charge security deposits or notary fees.");
+  }
   if (/pay \$\d+ to (start|join|unlock)/.test(full)) {
     score -= 40;
     redFlags.push("Asks for money upfront before allowing you to work");
+  }
+  if (/retype|retyping|copy paste.*word|typing work.*\$|typing jobs.*\$|handwritten.*word/.test(full)) {
+    score -= 40;
+    redFlags.push("PDF Retyping / Data Entry trap: Fake clients lure victims with huge sums to copy text, then demand deposit fees.");
+  }
+  if (/check.*equipment|cheque.*equipment|buy.*supplies.*check|send back the remaining|fake check/.test(full)) {
+    score -= 50;
+    redFlags.push("Fake check equipment scam: Fraudsters send fake checks and ask you to buy supplies from their vendor.");
   }
   if (/western union|moneygram|wire transfer/.test(full)) {
     score -= 30;
@@ -1308,12 +1493,16 @@ function analyzeScamLocally(url, text) {
     score -= 35;
     redFlags.push("Promised payout is unrealistically high for simple tasks");
   }
-  if (/telegram|whatsapp recruiter/.test(full)) {
-    score -= 25;
+  if (/telegram|whatsapp recruiter|contact me on telegram|message on telegram|reach me on telegram/.test(full)) {
+    score -= 30;
     redFlags.push("Recruitment conducted via anonymous Telegram/WhatsApp messages");
   }
 
-  if (/paypal|bank transfer|direct deposit|flipkart|paytm/.test(full)) {
+  if (/escrow|milestone payment|safepay/.test(full)) {
+    signals.push("Uses escrow or milestone-protected payment contract");
+    score += 10;
+  }
+  if (/paypal|bank transfer|direct deposit|flipkart|paytm|payoneer|wise/.test(full)) {
     signals.push("Uses verified, standard payment channels");
     score += 8;
   }
