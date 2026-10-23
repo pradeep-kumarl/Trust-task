@@ -1078,15 +1078,27 @@ function applyFiltersAndSort() {
   renderPagination();
 }
 
+function goToPage(page) {
+  const totalPages = Math.ceil(filteredTasks.length / ITEMS_PER_PAGE) || 1;
+  if (page < 1) page = 1;
+  if (page > totalPages) page = totalPages;
+  currentPage = page;
+  renderCurrentPage();
+  renderPagination();
+  const el = document.getElementById("view-tasks");
+  if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
+}
+
 function renderCurrentPage() {
   const grid = document.getElementById("tasksGrid");
   const empty = document.getElementById("noTasksMsg");
   const count = document.getElementById("taskCount");
   grid.innerHTML = "";
 
-  count.textContent = `${filteredTasks.length} opportunity${filteredTasks.length !== 1 ? "ies" : ""}`;
+  const totalPages = Math.ceil(filteredTasks.length / ITEMS_PER_PAGE) || 1;
 
   if (!filteredTasks.length) {
+    count.textContent = "0 opportunities";
     empty.classList.remove("hidden");
     document.getElementById("paginationWrap").innerHTML = "";
     return;
@@ -1094,8 +1106,10 @@ function renderCurrentPage() {
   empty.classList.add("hidden");
 
   const start = (currentPage - 1) * ITEMS_PER_PAGE;
-  const pageTasks = filteredTasks.slice(start, start + ITEMS_PER_PAGE);
+  const end = Math.min(start + ITEMS_PER_PAGE, filteredTasks.length);
+  count.textContent = `Showing ${start + 1}–${end} of ${filteredTasks.length} (Page ${currentPage} of ${totalPages})`;
 
+  const pageTasks = filteredTasks.slice(start, end);
   pageTasks.forEach(t => {
     grid.appendChild(createTaskCard(t));
   });
@@ -1155,22 +1169,22 @@ function renderPagination() {
   prev.className = "page-btn";
   prev.textContent = "« Previous";
   prev.disabled = currentPage === 1;
-  prev.onclick = () => { if (currentPage > 1) { currentPage--; renderCurrentPage(); renderPagination(); window.scrollTo({top: 250, behavior: 'smooth'}); } };
+  prev.onclick = () => goToPage(currentPage - 1);
   wrap.appendChild(prev);
 
   for (let i = 1; i <= totalPages; i++) {
     const btn = document.createElement("button");
     btn.className = `page-btn ${i === currentPage ? 'active' : ''}`;
     btn.textContent = i;
-    btn.onclick = () => { currentPage = i; renderCurrentPage(); renderPagination(); window.scrollTo({top: 250, behavior: 'smooth'}); };
+    btn.onclick = () => goToPage(i);
     wrap.appendChild(btn);
   }
 
   const next = document.createElement("button");
   next.className = "page-btn";
   next.textContent = "Next »";
-  next.disabled = currentPage === totalPages;
-  next.onclick = () => { if (currentPage < totalPages) { currentPage++; renderCurrentPage(); renderPagination(); window.scrollTo({top: 250, behavior: 'smooth'}); } };
+  next.disabled = currentPage >= totalPages;
+  next.onclick = () => goToPage(currentPage + 1);
   wrap.appendChild(next);
 }
 
