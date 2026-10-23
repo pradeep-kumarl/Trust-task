@@ -1074,6 +1074,9 @@ function applyFiltersAndSort() {
   else if (sort === "time_asc") filteredTasks.sort((a,b) => a.estimated_minutes - b.estimated_minutes);
   else if (sort === "trust_desc") filteredTasks.sort((a,b) => b.trust_score - a.trust_score);
 
+  const totalPages = Math.ceil(filteredTasks.length / ITEMS_PER_PAGE) || 1;
+  if (currentPage > totalPages) currentPage = 1;
+
   renderCurrentPage();
   renderPagination();
 }
