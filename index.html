@@ -449,15 +449,15 @@
 <!-- STATS BANNER -->
 <div class="stats-bar">
   <div class="stat-card">
-    <div class="stat-value green" id="stat-tasks">55+</div>
+    <div class="stat-value green" id="stat-tasks">60+</div>
     <div class="stat-label">Verified Opportunities</div>
   </div>
   <div class="stat-card">
-    <div class="stat-value teal" id="stat-rate">$42.80/hr</div>
+    <div class="stat-value teal" id="stat-rate">$46.50/hr</div>
     <div class="stat-label">Avg Normalized Pay</div>
   </div>
   <div class="stat-card">
-    <div class="stat-value amber" id="stat-platforms">28</div>
+    <div class="stat-value amber" id="stat-platforms">31</div>
     <div class="stat-label">Trusted Platforms</div>
   </div>
   <div class="stat-card" style="cursor:pointer;" onclick="switchTab('analytics')" title="Click to view live analytics dashboard">
@@ -522,7 +522,8 @@
           <label>Category</label>
           <select id="categorySelect">
             <option value="all">All Categories</option>
-            <option value="vetted_tech">🚀 Vetted Remote Tech Networks (Turing, Toptal, Arc)</option>
+            <option value="vetted_tier1">💎 Vetted Europe & Developed Nations Contracts (€50–€90/hr | $50–$100/hr)</option>
+            <option value="vetted_tech">🚀 All Vetted Tech Networks (Turing, Proxify, Toptal, Arc)</option>
             <option value="stipend_volunteer">🤝 Paid Volunteer & Civic Stipends</option>
             <option value="freelance">💼 All Freelance Jobs</option>
             <option value="freelance_tech">💻 Freelance Tech & Web Dev</option>
@@ -539,13 +540,15 @@
         <div class="filter-group">
           <label>Country / Region</label>
           <select id="countrySelect">
-            <option value="Global">Worldwide (Global)</option>
-            <option value="IN">India 🇮🇳</option>
+            <option value="Global">Worldwide (All Opportunities)</option>
+            <option value="TIER1_DEVELOPED">💎 Europe & Developed Tier-1 Only (US, UK, EU, CA, AU, DE, CH)</option>
+            <option value="EU_ONLY">🇪🇺 Europe Only (EU, UK, DE, NL, SE, CH, FR)</option>
             <option value="US">United States 🇺🇸</option>
             <option value="UK">United Kingdom 🇬🇧</option>
+            <option value="DE">Germany 🇩🇪</option>
             <option value="CA">Canada 🇨🇦</option>
             <option value="AU">Australia 🇦🇺</option>
-            <option value="DE">Germany 🇩🇪</option>
+            <option value="IN">India 🇮🇳</option>
             <option value="PH">Philippines 🇵🇭</option>
           </select>
         </div>
@@ -1444,6 +1447,72 @@ const EMBEDDED_TASKS = [
     payment_methods: ["Direct Bank Wire", "Payoneer", "Direct Deposit"], eligible_countries: ["Global", "IN", "US", "UK"],
     requirements: ["Engineering or CS background", "Python & algorithmic debugging"], min_age: 20,
     direct_apply_url: "https://www.turing.com/jobs/ai-engineers"
+  },
+  {
+    id: "task-vetted-proxify-01",
+    title: "Senior Cloud & Docker SRE (Stockholm & Berlin EU Enterprise Contract)",
+    description: "Manage high-availability Kubernetes clusters, Docker image validation pipelines, and automated Prometheus monitoring for European FinTech platforms.",
+    platform: "Proxify", category: "vetted_tier1", reward_amount: 130.00, currency: "EUR",
+    estimated_minutes: 120, hourly_rate_usd: 65.00, trust_score: 97, verified: true, is_tier1: true,
+    payment_methods: ["SEPA Bank Transfer", "Wise", "Direct Wire"],
+    eligible_countries: ["EU", "DE", "UK", "CH", "NL", "SE", "US", "CA", "Global"],
+    requirements: ["Docker & Kubernetes (EKS/GKE)", "Infrastructure as Code (Terraform)", "Fluent English"], min_age: 21,
+    direct_apply_url: "https://proxify.io/for-developers"
+  },
+  {
+    id: "task-vetted-lemon-01",
+    title: "Python / FastAPI Backend & Microservices Architect (European Series-A Startup)",
+    description: "Design scalable REST & GraphQL backend services in Python/FastAPI with PostgreSQL and Redis caching. Work with European & US product teams.",
+    platform: "Lemon.io", category: "vetted_tier1", reward_amount: 104.00, currency: "USD",
+    estimated_minutes: 120, hourly_rate_usd: 52.00, trust_score: 96, verified: true, is_tier1: true,
+    payment_methods: ["Direct Wire", "Payoneer", "Wise"],
+    eligible_countries: ["EU", "UK", "US", "CA", "AU", "DE", "Global"],
+    requirements: ["Python 3.10+", "FastAPI / Django", "Docker containerization"], min_age: 21,
+    direct_apply_url: "https://lemon.io/for-developers/"
+  },
+  {
+    id: "task-vetted-toptal-eu-01",
+    title: "DevSecOps & Cloud Security Compliance Lead (Frankfurt & London Enterprises)",
+    description: "Audit cloud architectures against GDPR and SOC-2 standards. Implement automated Trivy container vulnerability gating and SonarQube quality gates.",
+    platform: "Toptal", category: "vetted_tier1", reward_amount: 150.00, currency: "EUR",
+    estimated_minutes: 120, hourly_rate_usd: 75.00, trust_score: 98, verified: true, is_tier1: true,
+    payment_methods: ["SEPA Bank Transfer", "Direct Wire", "Payoneer"],
+    eligible_countries: ["EU", "DE", "UK", "CH", "US", "CA", "AU", "Global"],
+    requirements: ["DevSecOps tooling (Trivy, SonarQube)", "GDPR/SOC-2 compliance", "Senior cloud experience"], min_age: 21,
+    direct_apply_url: "https://www.toptal.com/devops"
+  },
+  {
+    id: "task-vetted-gunio-01",
+    title: "Senior AWS Cloud Infrastructure & Terraform Engineer (Tier-1 Developed Markets)",
+    description: "Deploy enterprise AWS multi-region infrastructure using Terraform and Ansible. Ensure 99.99% uptime for North American and European SaaS clients.",
+    platform: "Gun.io", category: "vetted_tier1", reward_amount: 130.00, currency: "USD",
+    estimated_minutes: 120, hourly_rate_usd: 65.00, trust_score: 97, verified: true, is_tier1: true,
+    payment_methods: ["Direct Wire", "Direct Deposit"],
+    eligible_countries: ["US", "EU", "UK", "CA", "AU", "DE", "Global"],
+    requirements: ["AWS Solutions Architect level", "Terraform modules", "Production SRE track record"], min_age: 21,
+    direct_apply_url: "https://www.gun.io/freelance-developers"
+  },
+  {
+    id: "task-vetted-turing-eu-01",
+    title: "Containerized Data-Pipeline & ML Ops Engineer (US / Western European Tech Contract)",
+    description: "Build robust Docker validation pipelines for incoming data lakes, verifying OCI metadata, model artifacts, and schema drift before deployment.",
+    platform: "Turing.com", category: "vetted_tier1", reward_amount: 110.00, currency: "USD",
+    estimated_minutes: 120, hourly_rate_usd: 55.00, trust_score: 97, verified: true, is_tier1: true,
+    payment_methods: ["Direct Bank Wire", "Payoneer", "Direct Deposit"],
+    eligible_countries: ["US", "EU", "UK", "CA", "AU", "DE", "Global"],
+    requirements: ["Docker build pipelines", "Python data engineering", "CI/CD automation"], min_age: 21,
+    direct_apply_url: "https://www.turing.com/jobs/devops-engineers"
+  },
+  {
+    id: "task-vetted-crossover-eu-01",
+    title: "Senior Enterprise Cloud Architect ($100,000 USD/yr Full-Time Remote Contract)",
+    description: "Full-time remote architecture position serving enterprise software companies in Europe, US, and UK. Weekly USD direct wire payouts.",
+    platform: "Crossover", category: "vetted_tier1", reward_amount: 100.00, currency: "USD",
+    estimated_minutes: 120, hourly_rate_usd: 50.00, trust_score: 93, verified: true, is_tier1: true,
+    payment_methods: ["Payoneer", "Direct Wire"],
+    eligible_countries: ["US", "EU", "UK", "CA", "AU", "DE", "Global"],
+    requirements: ["Cloud Architecture", "Pass Crossover vetting", "Fluent English"], min_age: 21,
+    direct_apply_url: "https://www.crossover.com/job-search"
   }
 ];
 
@@ -1615,6 +1684,24 @@ const EMBEDDED_PLATFORMS = [
     trust_score: 92, avg_hourly_pay: "$30k – $100k USD / year", min_payout: "Weekly via Payoneer",
     reputation: "Pioneer in full-time 40hr/week remote roles for senior technical leads and architects with fixed annual USD pay.",
     pros: ["Predictable full-time annual salary", "Weekly payouts", "100% remote from anywhere in India"]
+  },
+  {
+    name: "Proxify", website: "https://proxify.io", category: "European Vetted Tech Talent Network",
+    trust_score: 97, avg_hourly_pay: "€45 – €85/hr (€4,000 – €9,500/mo)", min_payout: "Monthly via SEPA / Wise / Wire",
+    reputation: "Leading European network connecting top-tier developers with fast-scaling tech companies across Sweden, Germany, Netherlands, and the UK. Guarantees long-term EU client engagements.",
+    pros: ["EU/UK high hourly rates", "Direct SEPA / Euro / Wise bank payout", "Dedicated talent manager"]
+  },
+  {
+    name: "Lemon.io", website: "https://lemon.io", category: "Vetted Startup Developer Matching",
+    trust_score: 96, avg_hourly_pay: "$45 – $80/hr", min_payout: "Bi-weekly via Payoneer / Wire",
+    reputation: "Specialized in matching vetted developers with early-stage and Series A startups in Europe and the United States. Fast vetting and guaranteed pay for every logged hour.",
+    pros: ["Fast vetting turnaround (48 hrs)", "Guaranteed payment protection", "High-budget EU & US tech startups"]
+  },
+  {
+    name: "Gun.io", website: "https://www.gun.io", category: "Elite Freelance Engineering (US & Tier-1 Markets)",
+    trust_score: 97, avg_hourly_pay: "$60 – $110/hr", min_payout: "Direct Deposit / Wire",
+    reputation: "Exclusive developer marketplace for senior engineers and architects working with high-growth US and European tech leaders. Transparent client budgets with zero talent commission.",
+    pros: ["Top 5% compensation rates", "Long-term retainers & contracts", "Direct wire transfer"]
   }
 ];
 
@@ -1986,14 +2073,40 @@ function applyFiltersAndSort() {
   const sort = document.getElementById("sortBySelect").value;
   const payment = document.getElementById("paymentSelect").value;
 
+  const TIER1_COUNTRIES = ["US", "UK", "EU", "DE", "CA", "AU", "NL", "CH", "FR", "SE", "DK", "NO", "NZ", "IE", "SG", "JP"];
+  const EU_COUNTRIES = ["EU", "DE", "UK", "FR", "NL", "SE", "ES", "IT", "CH", "PL", "NO", "DK", "IE"];
+
   filteredTasks = allTasks.filter(t => {
     const matchQ = !q || [t.title, t.platform, t.description, t.category, ...(t.requirements||[])].some(s => s && s.toLowerCase().includes(q));
-    const matchC = cat === "all" || 
-      (cat === "freelance" ? t.category.startsWith("freelance") : 
-      (cat === "vetted_tech" ? (t.category === "vetted_tech" || t.category === "freelance_tech") : 
-      t.category.toLowerCase() === cat.toLowerCase()));
+    
+    let matchC = false;
+    if (cat === "all") {
+      matchC = true;
+    } else if (cat === "vetted_tier1") {
+      matchC = t.category === "vetted_tier1" || t.is_tier1 === true;
+    } else if (cat === "vetted_tech") {
+      matchC = t.category === "vetted_tech" || t.category === "vetted_tier1" || t.is_tier1 === true || t.category === "freelance_tech";
+    } else if (cat === "freelance") {
+      matchC = t.category.startsWith("freelance");
+    } else {
+      matchC = t.category.toLowerCase() === cat.toLowerCase();
+    }
+
     const matchH = t.hourly_rate_usd >= minH;
-    const matchR = country === "Global" || t.eligible_countries.includes("Global") || t.eligible_countries.includes(country);
+    
+    let matchR = false;
+    if (country === "Global") {
+      matchR = true;
+    } else if (country === "TIER1_DEVELOPED") {
+      // Specifically Tier-1 Developed & European Contracts (US, UK, EU, CA, AU, DE, CH) barring low-payout 3rd world microtasks
+      matchR = (t.is_tier1 || t.category === "vetted_tier1" || t.category === "vetted_tech" || t.hourly_rate_usd >= 25) &&
+               t.eligible_countries.some(c => TIER1_COUNTRIES.includes(c));
+    } else if (country === "EU_ONLY") {
+      // European countries only
+      matchR = t.eligible_countries.some(c => EU_COUNTRIES.includes(c));
+    } else {
+      matchR = t.eligible_countries.includes("Global") || t.eligible_countries.includes(country);
+    }
     
     let matchP = true;
     if (payment === "paypal") matchP = t.payment_methods.some(m => /paypal/i.test(m));
@@ -2061,12 +2174,14 @@ function createTaskCard(t) {
   const isSaved = savedTaskIds.includes(t.id);
   const isScraped = t.is_scraped || (t.id && t.id.startsWith("scraped-"));
   const isCivic = t.category === "stipend_volunteer";
-  const isVetted = t.category === "vetted_tech";
+  const isTier1 = t.category === "vetted_tier1" || t.is_tier1 === true;
+  const isVetted = t.category === "vetted_tech" && !isTier1;
 
   card.innerHTML = `
     <div class="card-top">
       <div style="display:flex;align-items:center;gap:6px;flex-wrap:wrap">
         <span class="platform-badge">${esc(t.platform)}</span>
+        ${isTier1 ? '<span style="background:rgba(56,139,253,0.18);color:#79c0ff;border:1px solid rgba(56,139,253,0.45);border-radius:10px;font-size:10px;padding:2px 6px;font-weight:700">💎 VETTED EU & TIER-1 CONTRACT</span>' : ''}
         ${isVetted ? '<span style="background:#2a1b4a;color:#bc8cff;border:1px solid #5a3e85;border-radius:10px;font-size:10px;padding:2px 6px;font-weight:700">🚀 VETTED US CONTRACT</span>' : ''}
         ${isScraped ? '<span style="background:var(--green-bg);color:var(--green);border:1px solid var(--green-border);border-radius:10px;font-size:10px;padding:2px 6px;font-weight:700">● LIVE WEBSCRAPED</span>' : ''}
         ${isCivic ? '<span style="background:#1b2a4a;color:#58a6ff;border:1px solid #1f4277;border-radius:10px;font-size:10px;padding:2px 6px;font-weight:700">🤝 CIVIC STIPEND</span>' : ''}
@@ -2234,7 +2349,7 @@ function analyzeScamLocally(url, text) {
     };
   }
 
-  const whitelist = ["prolific.com", "usertesting.com", "dataannotation.tech", "outlier.ai", "toloka.ai", "yougov.com", "toluna.com", "respondent.io", "clickworker.com", "freecash.com", "swagbucks.com", "upwork.com", "fiverr.com", "freelancer.com", "problogger.com", "guru.com", "weworkremotely.com", "toptal.com", "turing.com", "arc.dev", "usebraintrust.com", "andela.com", "crossover.com", "gun.io"];
+  const whitelist = ["prolific.com", "usertesting.com", "dataannotation.tech", "outlier.ai", "toloka.ai", "yougov.com", "toluna.com", "respondent.io", "clickworker.com", "freecash.com", "swagbucks.com", "upwork.com", "fiverr.com", "freelancer.com", "problogger.com", "guru.com", "weworkremotely.com", "toptal.com", "turing.com", "arc.dev", "usebraintrust.com", "andela.com", "crossover.com", "gun.io", "proxify.io", "lemon.io"];
   const matchedDomain = whitelist.find(d => full.includes(d));
   if (matchedDomain) {
     score = 95;
