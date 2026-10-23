@@ -420,15 +420,15 @@
 <!-- STATS BANNER -->
 <div class="stats-bar">
   <div class="stat-card">
-    <div class="stat-value green" id="stat-tasks">45+</div>
+    <div class="stat-value green" id="stat-tasks">55+</div>
     <div class="stat-label">Verified Opportunities</div>
   </div>
   <div class="stat-card">
-    <div class="stat-value teal" id="stat-rate">$36.50/hr</div>
+    <div class="stat-value teal" id="stat-rate">$42.80/hr</div>
     <div class="stat-label">Avg Normalized Pay</div>
   </div>
   <div class="stat-card">
-    <div class="stat-value amber" id="stat-platforms">22</div>
+    <div class="stat-value amber" id="stat-platforms">28</div>
     <div class="stat-label">Trusted Platforms</div>
   </div>
   <div class="stat-card">
@@ -489,6 +489,7 @@
           <label>Category</label>
           <select id="categorySelect">
             <option value="all">All Categories</option>
+            <option value="vetted_tech">🚀 Vetted Remote Tech Networks (Turing, Toptal, Arc)</option>
             <option value="stipend_volunteer">🤝 Paid Volunteer & Civic Stipends</option>
             <option value="freelance">💼 All Freelance Jobs</option>
             <option value="freelance_tech">💻 Freelance Tech & Web Dev</option>
@@ -622,6 +623,7 @@
             <option value="testing" selected>Usability Testing & Audio ($20 - $35 / hr)</option>
             <option value="freelance_general">Freelance Writing & Virtual Support ($18 - $30 / hr)</option>
             <option value="freelance_tech">Freelance Web Dev & Tech Gigs ($30 - $60 / hr)</option>
+            <option value="vetted_contract">US Remote Tech Contract / Turing / Toptal ($40 - $75 / hr)</option>
             <option value="ai">AI Data Training & Model Review ($25 - $45 / hr)</option>
             <option value="interviews">Research Interviews & Advisory ($60 - $120 / hr)</option>
           </select>
@@ -1132,6 +1134,78 @@ const EMBEDDED_TASKS = [
     payment_methods: ["Direct Deposit", "PayPal"], eligible_countries: ["Global", "US", "UK", "CA"],
     requirements: ["Quiet space", "30-hr online empathy training"], min_age: 18,
     direct_apply_url: "https://www.crisistextline.org/become-a-volunteer/"
+  },
+  {
+    id: "task-vetted-turing-01", title: "Remote DevOps & Cloud Infrastructure Engineer (AWS, Docker, CI/CD)",
+    description: "Build automated Docker CI/CD pipelines, manage AWS ECS/EKS clusters, and integrate vulnerability scanning (Trivy/SonarQube) for high-growth US tech firms.",
+    platform: "Turing.com", category: "vetted_tech", reward_amount: 90.00, currency: "USD",
+    estimated_minutes: 120, hourly_rate_usd: 45.00, trust_score: 97, verified: true,
+    payment_methods: ["Direct Bank Wire", "Payoneer", "Direct Deposit"], eligible_countries: ["Global", "IN", "US", "CA"],
+    requirements: ["Docker & Kubernetes", "AWS cloud services (EKS/ECS)", "Pass Turing AI vetting"], min_age: 21,
+    direct_apply_url: "https://www.turing.com/jobs/devops-engineers"
+  },
+  {
+    id: "task-vetted-turing-02", title: "Data-Validation & Containerized ML Pipeline Specialist",
+    description: "Design Docker-based validation workflows for AI training datasets and model artifacts. Enforce schema compliance and OCI labels before production deployment.",
+    platform: "Turing.com", category: "vetted_tech", reward_amount: 96.00, currency: "USD",
+    estimated_minutes: 120, hourly_rate_usd: 48.00, trust_score: 96, verified: true,
+    payment_methods: ["Direct Bank Wire", "Payoneer", "Direct Deposit"], eligible_countries: ["Global", "IN", "US"],
+    requirements: ["Docker multi-stage validation", "Python schema validation", "Git versioning"], min_age: 21,
+    direct_apply_url: "https://www.turing.com/jobs/data-engineering"
+  },
+  {
+    id: "task-vetted-toptal-01", title: "Senior Cloud & DevSecOps Consultant (Trivy, SonarQube, Terraform)",
+    description: "Lead cloud security hardening, compliance scans, and automated Terraform infrastructure provisioning for Fortune 500 enterprise clients.",
+    platform: "Toptal", category: "vetted_tech", reward_amount: 120.00, currency: "USD",
+    estimated_minutes: 120, hourly_rate_usd: 60.00, trust_score: 98, verified: true,
+    payment_methods: ["Bank Transfer", "Payoneer", "PayPal"], eligible_countries: ["Global", "IN", "US", "UK", "EU"],
+    requirements: ["Terraform IaC", "DevSecOps audit track record", "Top 3% screening"], min_age: 21,
+    direct_apply_url: "https://www.toptal.com/devops"
+  },
+  {
+    id: "task-vetted-arc-01", title: "Full-Stack Python & Modern Web Engineer (Pre-Vetted US Match)",
+    description: "Develop scalable REST APIs in Python/FastAPI with modern React frontends. Pre-vetted once and matched with top US venture-backed companies.",
+    platform: "Arc.dev", category: "vetted_tech", reward_amount: 84.00, currency: "USD",
+    estimated_minutes: 120, hourly_rate_usd: 42.00, trust_score: 95, verified: true,
+    payment_methods: ["Direct Bank Wire", "Wise", "Payoneer"], eligible_countries: ["Global", "IN", "US", "CA", "UK"],
+    requirements: ["Python 3+", "FastAPI or Django", "Fluent conversational English"], min_age: 20,
+    direct_apply_url: "https://arc.dev/remote-jobs/python"
+  },
+  {
+    id: "task-vetted-braintrust-01", title: "Senior Kubernetes (EKS) & CloudWatch Architect (Zero-Commission)",
+    description: "Architect multi-tenant Kubernetes EKS clusters with auto-scaling, Prometheus/Grafana metrics, and zero talent commission deductions.",
+    platform: "Braintrust", category: "vetted_tech", reward_amount: 130.00, currency: "USD",
+    estimated_minutes: 120, hourly_rate_usd: 65.00, trust_score: 97, verified: true,
+    payment_methods: ["Direct Bank Wire", "Crypto", "Direct Deposit"], eligible_countries: ["Global", "IN", "US", "UK"],
+    requirements: ["EKS & Helm charts", "Production observability", "0% platform fees for talent"], min_age: 21,
+    direct_apply_url: "https://www.usebraintrust.com/talent"
+  },
+  {
+    id: "task-vetted-andela-01", title: "Backend Python & Distributed Cloud Services Developer",
+    description: "Build scalable cloud services and asynchronous data workers on AWS Lambda and DynamoDB for North American tech firms.",
+    platform: "Andela", category: "vetted_tech", reward_amount: 80.00, currency: "USD",
+    estimated_minutes: 120, hourly_rate_usd: 40.00, trust_score: 96, verified: true,
+    payment_methods: ["Direct Bank Wire", "Payoneer"], eligible_countries: ["Global", "IN", "PH", "NG", "KE", "BR"],
+    requirements: ["Python & AWS Lambda", "Async architecture", "Andela network assessment"], min_age: 20,
+    direct_apply_url: "https://www.andela.com/for-talent"
+  },
+  {
+    id: "task-vetted-crossover-01", title: "Cloud Solutions Architect ($100,000 USD/yr Full-Time Remote Contract)",
+    description: "Full-time 40 hr/week remote contract delivering high-scale AWS architectures and cost-optimization for enterprise software portfolios.",
+    platform: "Crossover", category: "vetted_tech", reward_amount: 100.00, currency: "USD",
+    estimated_minutes: 120, hourly_rate_usd: 50.00, trust_score: 92, verified: true,
+    payment_methods: ["Payoneer", "Direct Bank Wire"], eligible_countries: ["Global", "IN", "US", "EU"],
+    requirements: ["Senior engineering background", "Pass Crossover cognitive test", "Weekly pay"], min_age: 21,
+    direct_apply_url: "https://www.crossover.com/job-search"
+  },
+  {
+    id: "task-vetted-turing-03", title: "AI Prompt & Code Quality Specialist (Frontier LLM Evaluation)",
+    description: "Test, benchmark, and fine-tune frontier code generation models. Review logic proofs, syntax edge cases, and algorithmic efficiency.",
+    platform: "Turing.com", category: "vetted_tech", reward_amount: 70.00, currency: "USD",
+    estimated_minutes: 120, hourly_rate_usd: 35.00, trust_score: 96, verified: true,
+    payment_methods: ["Direct Bank Wire", "Payoneer", "Direct Deposit"], eligible_countries: ["Global", "IN", "US", "UK"],
+    requirements: ["Engineering or CS background", "Python & algorithmic debugging"], min_age: 20,
+    direct_apply_url: "https://www.turing.com/jobs/ai-engineers"
   }
 ];
 
@@ -1267,6 +1341,42 @@ const EMBEDDED_PLATFORMS = [
     trust_score: 94, avg_hourly_pay: "$20 – $50/hr", min_payout: "Per approved bounty",
     reputation: "Civic community supporting open source software. Earn bounties for creating documentation, bug testing, or translation work.",
     pros: ["Fast payouts upon PR merge", "Clear milestone requirements", "Open to contributors worldwide"]
+  },
+  {
+    name: "Turing.com", website: "https://www.turing.com", category: "AI-Vetted Remote Tech & Engineering",
+    trust_score: 96, avg_hourly_pay: "$30 – $70/hr ($3,500 – $9,000/mo)", min_payout: "Bi-weekly via Direct Bank Transfer (Tipalti / Wire)",
+    reputation: "World-class AI-powered vetting platform matching developers and DevOps engineers worldwide with US remote contracts. Pre-vetted once, matched with ongoing full-time or contract roles.",
+    pros: ["High US market pay rates", "Direct wire / local bank deposit to India", "Long-term contracts (6–12+ months)"]
+  },
+  {
+    name: "Toptal", website: "https://www.toptal.com", category: "Elite Freelance Network (Top 3%)",
+    trust_score: 98, avg_hourly_pay: "$50 – $100/hr", min_payout: "Bi-weekly via Bank Wire / Payoneer",
+    reputation: "The undisputed elite talent network for senior software engineers, DevOps leads, and cloud architects. Zero commission deducted from talent.",
+    pros: ["Highest freelance compensation rates", "Fortune 500 enterprise clients", "Guaranteed bi-weekly payouts"]
+  },
+  {
+    name: "Arc.dev", website: "https://arc.dev", category: "Global Remote Developer Hub",
+    trust_score: 95, avg_hourly_pay: "$35 – $75/hr", min_payout: "Per contract terms (Wise / Wire)",
+    reputation: "Fast-growing pre-vetted remote marketplace connecting developers and cloud specialists directly with Silicon Valley and US startups.",
+    pros: ["Streamlined vetting process", "Full-time and high-paying contracts", "No talent fee deductions"]
+  },
+  {
+    name: "Braintrust", website: "https://www.usebraintrust.com", category: "Zero-Fee Enterprise Talent Network",
+    trust_score: 97, avg_hourly_pay: "$40 – $90/hr", min_payout: "Bi-weekly directly to Bank Account",
+    reputation: "Enterprise network used by Nike, Intel, and Nestlé. Unlike typical platforms that take 10–20%, Braintrust charges freelancers 0% fees.",
+    pros: ["Keep 100% of what you bill (0% fee)", "Enterprise-grade client budgets", "Global bank deposit"]
+  },
+  {
+    name: "Andela", website: "https://www.andela.com", category: "Global Tech Talent Network",
+    trust_score: 96, avg_hourly_pay: "$30 – $65/hr", min_payout: "Monthly direct wire transfer",
+    reputation: "Pioneer in connecting software and DevOps talent from emerging markets with top international engineering teams in the US and Europe.",
+    pros: ["Dedicated career matching team", "Stable long-term contracts", "Direct Indian bank payouts"]
+  },
+  {
+    name: "Crossover", website: "https://www.crossover.com", category: "Full-Time High-Compensation Remote",
+    trust_score: 92, avg_hourly_pay: "$30k – $100k USD / year", min_payout: "Weekly via Payoneer",
+    reputation: "Pioneer in full-time 40hr/week remote roles for senior technical leads and architects with fixed annual USD pay.",
+    pros: ["Predictable full-time annual salary", "Weekly payouts", "100% remote from anywhere in India"]
   }
 ];
 
@@ -1518,7 +1628,10 @@ function applyFiltersAndSort() {
 
   filteredTasks = allTasks.filter(t => {
     const matchQ = !q || [t.title, t.platform, t.description, t.category, ...(t.requirements||[])].some(s => s && s.toLowerCase().includes(q));
-    const matchC = cat === "all" || (cat === "freelance" ? t.category.startsWith("freelance") : t.category.toLowerCase() === cat.toLowerCase());
+    const matchC = cat === "all" || 
+      (cat === "freelance" ? t.category.startsWith("freelance") : 
+      (cat === "vetted_tech" ? (t.category === "vetted_tech" || t.category === "freelance_tech") : 
+      t.category.toLowerCase() === cat.toLowerCase()));
     const matchH = t.hourly_rate_usd >= minH;
     const matchR = country === "Global" || t.eligible_countries.includes("Global") || t.eligible_countries.includes(country);
     
@@ -1588,11 +1701,13 @@ function createTaskCard(t) {
   const isSaved = savedTaskIds.includes(t.id);
   const isScraped = t.is_scraped || (t.id && t.id.startsWith("scraped-"));
   const isCivic = t.category === "stipend_volunteer";
+  const isVetted = t.category === "vetted_tech";
 
   card.innerHTML = `
     <div class="card-top">
       <div style="display:flex;align-items:center;gap:6px;flex-wrap:wrap">
         <span class="platform-badge">${esc(t.platform)}</span>
+        ${isVetted ? '<span style="background:#2a1b4a;color:#bc8cff;border:1px solid #5a3e85;border-radius:10px;font-size:10px;padding:2px 6px;font-weight:700">🚀 VETTED US CONTRACT</span>' : ''}
         ${isScraped ? '<span style="background:var(--green-bg);color:var(--green);border:1px solid var(--green-border);border-radius:10px;font-size:10px;padding:2px 6px;font-weight:700">● LIVE WEBSCRAPED</span>' : ''}
         ${isCivic ? '<span style="background:#1b2a4a;color:#58a6ff;border:1px solid #1f4277;border-radius:10px;font-size:10px;padding:2px 6px;font-weight:700">🤝 CIVIC STIPEND</span>' : ''}
       </div>
@@ -1724,6 +1839,7 @@ function calculateEarnings() {
   if (type === "testing") hourlyRate = 25;
   else if (type === "freelance_general") hourlyRate = 24;
   else if (type === "freelance_tech") hourlyRate = 45;
+  else if (type === "vetted_contract") hourlyRate = 50;
   else if (type === "ai") hourlyRate = 35;
   else if (type === "interviews") hourlyRate = 80;
 
@@ -1756,7 +1872,7 @@ function analyzeScamLocally(url, text) {
     };
   }
 
-  const whitelist = ["prolific.com", "usertesting.com", "dataannotation.tech", "outlier.ai", "toloka.ai", "yougov.com", "toluna.com", "respondent.io", "clickworker.com", "freecash.com", "swagbucks.com", "upwork.com", "fiverr.com", "freelancer.com", "problogger.com", "guru.com", "weworkremotely.com", "toptal.com"];
+  const whitelist = ["prolific.com", "usertesting.com", "dataannotation.tech", "outlier.ai", "toloka.ai", "yougov.com", "toluna.com", "respondent.io", "clickworker.com", "freecash.com", "swagbucks.com", "upwork.com", "fiverr.com", "freelancer.com", "problogger.com", "guru.com", "weworkremotely.com", "toptal.com", "turing.com", "arc.dev", "usebraintrust.com", "andela.com", "crossover.com", "gun.io"];
   const matchedDomain = whitelist.find(d => full.includes(d));
   if (matchedDomain) {
     score = 95;
