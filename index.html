@@ -449,7 +449,7 @@
 <!-- STATS BANNER -->
 <div class="stats-bar">
   <div class="stat-card">
-    <div class="stat-value green" id="stat-tasks">60+</div>
+    <div class="stat-value green" id="stat-tasks">65+</div>
     <div class="stat-label">Verified Opportunities</div>
   </div>
   <div class="stat-card">
@@ -457,7 +457,7 @@
     <div class="stat-label">Avg Normalized Pay</div>
   </div>
   <div class="stat-card">
-    <div class="stat-value amber" id="stat-platforms">31</div>
+    <div class="stat-value amber" id="stat-platforms">32</div>
     <div class="stat-label">Trusted Platforms</div>
   </div>
   <div class="stat-card" style="cursor:pointer;" onclick="switchTab('analytics')" title="Click to view live analytics dashboard">
@@ -521,7 +521,8 @@
         <div class="filter-group">
           <label>Category</label>
           <select id="categorySelect">
-            <option value="all" selected>🌐 Show Everything (All 60+ Opportunities)</option>
+            <option value="all" selected>🌐 Show Everything (All 65+ Opportunities)</option>
+            <option value="youtube_creator">🎬 YouTube & Creator Economy (Editing, Scriptwriting, Thumbnails)</option>
             <option value="vetted_tier1">💎 Europe & Tier-1 Developed Contracts Only (€50–€90/hr | $50–$100/hr)</option>
             <option value="vetted_tech">💻 Vetted Tech Networks Only (18 Roles: Turing, Proxify, Toptal, Arc)</option>
             <option value="stipend_volunteer">🤝 Paid Volunteer & Civic Stipends</option>
@@ -588,7 +589,7 @@
       <span class="section-title">Verified Genuine Opportunities</span>
       <div style="display:flex;align-items:center;gap:10px;">
         <button id="btnResetFilters" class="btn btn-ghost hidden" onclick="resetAllFilters()" style="font-size:11px;padding:3px 10px;color:var(--teal);border-color:var(--teal);cursor:pointer;">
-          ✕ Reset to Show All 60+
+          ✕ Reset to Show All 65+
         </button>
         <span class="count-badge" id="taskCount">Loading…</span>
       </div>
@@ -1518,6 +1519,61 @@ const EMBEDDED_TASKS = [
     eligible_countries: ["US", "EU", "UK", "CA", "AU", "DE", "Global"],
     requirements: ["Cloud Architecture", "Pass Crossover vetting", "Fluent English"], min_age: 21,
     direct_apply_url: "https://www.crossover.com/job-search"
+  },
+  {
+    id: "task-yt-editor-01",
+    title: "Long-Form Tech & AI Video Editor (DaVinci Resolve / Premiere Pro)",
+    description: "Edit engaging 10–15 min tech breakdown videos with kinetic text callouts, smooth b-roll pacing, audio cleanup, and motion graphics inspired by top creator studios.",
+    platform: "YTJobs.co", category: "youtube_creator", reward_amount: 90.00, currency: "USD",
+    estimated_minutes: 120, hourly_rate_usd: 45.00, trust_score: 98, verified: true,
+    payment_methods: ["PayPal", "Wise", "Direct Bank Wire"],
+    eligible_countries: ["Global", "IN", "US", "UK", "EU"],
+    requirements: ["DaVinci Resolve or Premiere Pro", "Pacing & kinetic typography", "Portfolio link required"], min_age: 18,
+    direct_apply_url: "https://ytjobs.co/jobs/video-editor"
+  },
+  {
+    id: "task-yt-thumb-01",
+    title: "High-CTR YouTube Thumbnail Artist & Visual Packaging Specialist",
+    description: "Create high-contrast, click-worthy 3D thumbnails in Photoshop/Figma. A/B test facial expressions, bold typography, and visual hooks to exceed 8% CTR on tech content.",
+    platform: "YTJobs.co", category: "youtube_creator", reward_amount: 70.00, currency: "USD",
+    estimated_minutes: 90, hourly_rate_usd: 46.67, trust_score: 97, verified: true,
+    payment_methods: ["PayPal", "Wise", "Payoneer"],
+    eligible_countries: ["Global", "IN", "US", "UK"],
+    requirements: ["Photoshop / Figma mastery", "CTR psychology & lighting techniques", "High-res portfolio"], min_age: 18,
+    direct_apply_url: "https://ytjobs.co/jobs/thumbnail-designer"
+  },
+  {
+    id: "task-yt-script-01",
+    title: "Tech & AI Deep-Dive Scriptwriter (Story-Driven Video Explainer)",
+    description: "Draft retention-focused video scripts (1,800–2,200 words) dissecting AI breakthroughs, DevOps tools, and coding workflows with strong 15-second opening hooks.",
+    platform: "YTJobs.co", category: "youtube_creator", reward_amount: 120.00, currency: "USD",
+    estimated_minutes: 180, hourly_rate_usd: 40.00, trust_score: 97, verified: true,
+    payment_methods: ["PayPal", "Wise", "Direct Deposit"],
+    eligible_countries: ["Global", "IN", "US", "UK"],
+    requirements: ["Technical literacy", "Storyboarding & hook architecture", "Sample tech scripts"], min_age: 18,
+    direct_apply_url: "https://ytjobs.co/jobs/scriptwriter"
+  },
+  {
+    id: "task-yt-shorts-01",
+    title: "Shorts & Reels Viral Video Repurposing Specialist",
+    description: "Transform long-form coding streams and podcasts into viral 60-second vertical videos featuring dynamic animated captions, sound effects, and punchy zoom-cuts.",
+    platform: "Upwork", category: "youtube_creator", reward_amount: 75.00, currency: "USD",
+    estimated_minutes: 120, hourly_rate_usd: 37.50, trust_score: 96, verified: true,
+    payment_methods: ["Direct Bank Deposit", "PayPal", "Payoneer"],
+    eligible_countries: ["Global", "IN", "US", "UK"],
+    requirements: ["CapCut Pro or Premiere Pro", "Viral pacing expertise", "Sample reel required"], min_age: 18,
+    direct_apply_url: "https://www.upwork.com/freelance-jobs/youtube-video-editing/"
+  },
+  {
+    id: "task-yt-manager-01",
+    title: "YouTube Channel Strategist & SEO Packaging Specialist (VidIQ / TubeBuddy)",
+    description: "Optimize video titles, tags, descriptions, end screens, and chapter markers. Monitor audience retention curves, CTR metrics, and community engagement posts.",
+    platform: "YTJobs.co", category: "youtube_creator", reward_amount: 80.00, currency: "USD",
+    estimated_minutes: 120, hourly_rate_usd: 40.00, trust_score: 96, verified: true,
+    payment_methods: ["PayPal", "Direct Wire"],
+    eligible_countries: ["Global", "IN", "US", "UK"],
+    requirements: ["YouTube Studio & VidIQ fluency", "Analytical mindset", "Track record of channel growth"], min_age: 18,
+    direct_apply_url: "https://ytjobs.co/jobs/channel-manager"
   }
 ];
 
@@ -1707,6 +1763,12 @@ const EMBEDDED_PLATFORMS = [
     trust_score: 97, avg_hourly_pay: "$60 – $110/hr", min_payout: "Direct Deposit / Wire",
     reputation: "Exclusive developer marketplace for senior engineers and architects working with high-growth US and European tech leaders. Transparent client budgets with zero talent commission.",
     pros: ["Top 5% compensation rates", "Long-term retainers & contracts", "Direct wire transfer"]
+  },
+  {
+    name: "YTJobs.co", website: "https://ytjobs.co", category: "Dedicated YouTube & Creator Marketplace",
+    trust_score: 98, avg_hourly_pay: "$25 – $75/hr ($1,500 – $5,000/mo)", min_payout: "Direct contract (Wise / PayPal / Wire)",
+    reputation: "The premier global job board for YouTube creators. Top creators (including Ali Abdaal, MrBeast, Colin & Samir, and tech channels) hire video editors, thumbnail designers, and scriptwriters directly.",
+    pros: ["Direct creator contracts with zero middleman fee", "Massive demand for tech & educational video editors", "Open to talent worldwide including India"]
   }
 ];
 
@@ -2087,6 +2149,8 @@ function applyFiltersAndSort() {
     let matchC = false;
     if (cat === "all") {
       matchC = true;
+    } else if (cat === "youtube_creator") {
+      matchC = t.category === "youtube_creator" || (t.platform && t.platform.includes("YTJobs"));
     } else if (cat === "vetted_tier1") {
       matchC = t.category === "vetted_tier1" || t.is_tier1 === true;
     } else if (cat === "vetted_tech") {
@@ -2200,6 +2264,7 @@ function createTaskCard(t) {
   const isSaved = savedTaskIds.includes(t.id);
   const isScraped = t.is_scraped || (t.id && t.id.startsWith("scraped-"));
   const isCivic = t.category === "stipend_volunteer";
+  const isCreator = t.category === "youtube_creator";
   const isTier1 = t.category === "vetted_tier1" || t.is_tier1 === true;
   const isVetted = t.category === "vetted_tech" && !isTier1;
 
@@ -2207,6 +2272,7 @@ function createTaskCard(t) {
     <div class="card-top">
       <div style="display:flex;align-items:center;gap:6px;flex-wrap:wrap">
         <span class="platform-badge">${esc(t.platform)}</span>
+        ${isCreator ? '<span style="background:rgba(255,0,0,0.15);color:#ff7b72;border:1px solid rgba(255,0,0,0.35);border-radius:10px;font-size:10px;padding:2px 6px;font-weight:700">🎬 YOUTUBE CREATOR</span>' : ''}
         ${isTier1 ? '<span style="background:rgba(56,139,253,0.18);color:#79c0ff;border:1px solid rgba(56,139,253,0.45);border-radius:10px;font-size:10px;padding:2px 6px;font-weight:700">💎 VETTED EU & TIER-1 CONTRACT</span>' : ''}
         ${isVetted ? '<span style="background:#2a1b4a;color:#bc8cff;border:1px solid #5a3e85;border-radius:10px;font-size:10px;padding:2px 6px;font-weight:700">🚀 VETTED US CONTRACT</span>' : ''}
         ${isScraped ? '<span style="background:var(--green-bg);color:var(--green);border:1px solid var(--green-border);border-radius:10px;font-size:10px;padding:2px 6px;font-weight:700">● LIVE WEBSCRAPED</span>' : ''}
@@ -2375,7 +2441,7 @@ function analyzeScamLocally(url, text) {
     };
   }
 
-  const whitelist = ["prolific.com", "usertesting.com", "dataannotation.tech", "outlier.ai", "toloka.ai", "yougov.com", "toluna.com", "respondent.io", "clickworker.com", "freecash.com", "swagbucks.com", "upwork.com", "fiverr.com", "freelancer.com", "problogger.com", "guru.com", "weworkremotely.com", "toptal.com", "turing.com", "arc.dev", "usebraintrust.com", "andela.com", "crossover.com", "gun.io", "proxify.io", "lemon.io"];
+  const whitelist = ["prolific.com", "usertesting.com", "dataannotation.tech", "outlier.ai", "toloka.ai", "yougov.com", "toluna.com", "respondent.io", "clickworker.com", "freecash.com", "swagbucks.com", "upwork.com", "fiverr.com", "freelancer.com", "problogger.com", "guru.com", "weworkremotely.com", "toptal.com", "turing.com", "arc.dev", "usebraintrust.com", "andela.com", "crossover.com", "gun.io", "proxify.io", "lemon.io", "ytjobs.co"];
   const matchedDomain = whitelist.find(d => full.includes(d));
   if (matchedDomain) {
     score = 95;
