@@ -1,4 +1,6 @@
-# TrustTask — Genuine Survey & Microtask Hunter
+# TrustTask — Genuine Survey & free lance task search page
+
+https://main.dmmh4g93b8ki5.amplifyapp.com/
 
 A local intelligence application and aggregator designed to search, filter, and verify legitimate paying surveys, usability tests, AI data training annotations, and research studies across the web, prioritizing **high-yield USD earnings** payable directly to international accounts (including PayPal/Payoneer for India) while protecting users from scams and low-paying panels.
 
